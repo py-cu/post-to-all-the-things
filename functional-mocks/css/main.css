@@ -1,0 +1,14 @@
+.icon {
+	display: inline-block;
+	height: 25px;
+	width: 25px;
+}
+
+.icon img {
+	height: 100%;
+	width: 100%;
+}
+
+ul.message-list {
+	list-style-type: none;
+}
