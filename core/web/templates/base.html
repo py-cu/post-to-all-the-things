@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+    <title>Py-CU PTATT: Messages</title>
+    <link rel="stylesheet" href="/static/css/normalize.css">
+    <link rel="stylesheet" href="/static/css/foundation.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+    <header>
+        
+        <nav class="top-bar" data-topbar role="navigation">
+            <ul class="title-area">
+                <li class="name">
+                    <h1><a href="#">Py-CU PTATT</a></h1>
+                </li>
+            </ul>
+
+            <section class="top-bar-section">
+                <!-- Right Nav Section -->
+                <ul class="right">
+                    <li><a href="#">Admin</a></li>
+                    <li class="has-dropdown">
+                        <a href="#">Status</a>
+                        <ul class="dropdown">
+                            <li class="active"><a href="#">Signout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- Left Nav Section -->
+                <ul class="left">
+                    <li class="has-dropdown">
+                        <a href="#">Messages</a>
+                        <ul class="dropdown">
+                            <li><a href="{{url_for('new_message')}}">New</a></li>
+                            <li class="active"><a href="{{url_for('home')}}">History</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </nav>
+    </header>
+    {% block body %}
+      
+    {% endblock %}
+    <footer></footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/foundation/foundation.js"></script>
+    <script type="text/javascript" src="/static/js/foundation/foundation.topbar.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+</body>
+</html>

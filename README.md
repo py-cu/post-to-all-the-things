@@ -8,3 +8,13 @@ This is meant to be a sustained PyCU group project, suitable for multiple contri
 * user registration/authentication
 * form to input some message/announcement, like an upcoming Py-CU meeting
 * upon submit, a bunch of services are used to post said message to at least: Facebook, Meetup, and Twitter
+
+
+### Work-in-progress instructions
+Installing:  
+`pip install -r requirements.txt`  
+Running server:  
+`python main.py`  
+
+Running tests:  
+`python -m unittest`
