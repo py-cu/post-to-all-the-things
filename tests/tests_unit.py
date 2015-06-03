@@ -1,5 +1,5 @@
 import unittest
-from core import models
+from web import models
 
 
 class TestModelOperations(unittest.TestCase):
