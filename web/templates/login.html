@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+<div class="row">
+    <div class="large-12 columns">
+        <h1>Login</h1>
+    </div>
+</div>
+<div class="row">
+    <section class="large-7 small-12 columns messages">
+        <form action="/login" method="POST">
+            <div class="row">
+                {% if message %}
+                <div data-alert class="alert-box alert radius">
+                  {{message}}
+                </div>
+                {%endif%}
+            </div>
+            <div class="row">
+                <div class="large-4 columns"><label>Username<input type="text" name="username"></label></div>
+            </div>
+            <div class="row">
+                <div class="large-4 columns"><label>Password<input type="password" name="password"></label>
+                <button class="button left">Submit</button></div>
+            </div>
+        </form>
+
+    </div>
+</div>
+{% endblock %}

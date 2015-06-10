@@ -1,6 +1,7 @@
 import hashlib, os
 
 from sqlalchemy import Column, Integer, String, Boolean, Binary, DateTime, ForeignKey, UniqueConstraint
+from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -27,13 +28,23 @@ class User(Base):
         salt, hashed_pw = self.password[:10], self.password[10:]
         return hashed_pw == hashlib.pbkdf2_hmac("sha256", password.encode("utf-8"), salt, 100000)
 
+    
+class Session(Base):
+    __tablename__ = 'web_sessions'
+    id = Column(Integer, primary_key=True)
+    key = Column(String)
+    user_id = Column(Integer, ForeignKey('users.id'))
+    created = Column(DateTime, default=func.now())
+
+    user = relationship("User", backref=backref('session', order_by=id))
+
 
 class Message(Base):
     __tablename__ = 'messages'
 
     id = Column(Integer, primary_key=True)
     text = Column(String)
-    created = Column(DateTime)
+    created = Column(DateTime, default=func.now())
     author_id = Column(Integer, ForeignKey('users.id'))
 
     author = relationship("User", backref=backref('messages', order_by=id))
