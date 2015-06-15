@@ -10,21 +10,34 @@
 <div class="row">
     <section class="large-7 small-12 columns messages">
         <h3>Please enter your message</h3>
-        <form action="#">
+        <form action="/new" method="POST">
             <div class="row">
-                <div class="large-4 columns"><label>Date<input type="text" placeholder="MM/DD/YYYY hh:mm"></label></div>
+                <div class="large-4 columns">{{form.date.label}}{{form.date(placeholder="MM/DD/YYYY hh:mm")}}</div>
             </div>
             <div class="row">
-                <div class="large-12 columns"><label>Message<textarea placeholder="Message"></textarea></label></div>
+                <div class="large-12 columns">{{form.message.label}}{{form.message(placeholder="Message")}}</div>
             </div>
             <div class="row">
-                <div class="large-12 columns"><label>Medium</label><input type="checkbox" name="chk-twitter" id="chk-twitter"><label for="chk-twitter">Twitter</label><input type="checkbox" name="chk-fb" id="chk-fb"><label for="chk-fb">Facebook</label></div>
+                <div class="large-12 columns"><label>Medium</label>
+                        {{form.send_twitter()}}{{form.send_twitter.label}}
+                        {{form.send_facebook()}}{{form.send_facebook.label}}
+                        {{form.send_meetup()}}{{form.send_meetup.label}}
+                </div>
             </div>
             <div class="row">
-                <submit class="button right">Submit</submit>
+                <input type="submit" class="button right" value="Submit"></input>
+            </div>
+            <div class="row">
+                {% if form.errors %}
+                    {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+                        {% for error in field_errors %}
+                            <div class="alert-box alert radius">{{ field_name }}: {{ error }}</div>
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
             </div>
         </form>
 
-    </div>
+    </section>
 </div>
 {% endblock %}
